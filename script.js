@@ -2,15 +2,15 @@
   "use strict";
 
   // ------- Configuration -------
-  const SERVICE_NAME = "Diamond Glass Glow";
+  const SERVICE_NAME = "Medical Face and Neck Double Lifting Treatment";
   const SERVICE_DURATION_MIN = 60;
 
   // GHL credentials
   const GHL = {
-    locationId: 'y0BxIuctoWoj4zjXtJbh',
-    calendarId: 'XC5ngq4Ax0KsaofGDw9N',
+    locationId: 'EuUsWP5zWrVFcMnJ9c54',
+    calendarId: '1Jv7MWEDWsD9H1OBkZX5',
     userId:     '2tQreqXcDpaAiSBqlK7T',
-    apiKey:     'pit-da9b40a9-7512-4a9f-ac91-e150a241cf69',
+    apiKey:     'pit-6b6190bf-9942-4648-a175-641759f89348',
     apiBase:    'https://services.leadconnectorhq.com',
     version:    '2021-07-28',
   };
@@ -281,14 +281,12 @@
         lastName: lastName || '-',
         email,
         phone,
-        source: 'Diamond Glass Glow LP',
-        tags: ['Diamond Glass Glow'],
+        source: 'Medical Face and Neck Double Lifting LP',
+        tags: ['Medical Face and Neck Double Lifting'],
       });
       const contactId = contactRes.contact?.id || contactRes.id;
 
       // 2) Book appointment
-      // appointmentStatus: 'confirmed' ensures the booking is visible in
-      // the GHL dashboard calendar view (default 'new' may be hidden).
       // selectedTimezone tells GHL which timezone the slot was picked in.
       await ghlFetch('/calendars/events/appointments', {
         calendarId: GHL.calendarId,
@@ -297,8 +295,7 @@
         assignedUserId: GHL.userId,
         startTime:      isoInTz(start, BUSINESS_TZ),
         endTime:        isoInTz(end,   BUSINESS_TZ),
-        title:          `${name} — Diamond Glass Glow`,
-        appointmentStatus: 'confirmed',
+        title:          `${name} — Medical Face and Neck Double Lifting Treatment`,
         selectedTimezone: BUSINESS_TZ,
       });
 
