@@ -2,13 +2,13 @@
   "use strict";
 
   // ------- Configuration -------
-  const SERVICE_NAME = "Microtox Glass Skin Treatment";
+  const SERVICE_NAME = "Botox Glow Deal";
   const SERVICE_DURATION_MIN = 60;
 
   // GHL credentials
   const GHL = {
     locationId: '9fZSzFzTFV8sZzfj4SlV',
-    calendarId: 'IVosSEenErsWx6W1ck4M',
+    calendarId: 'ZlawzjZ3ecYnJKDM111A',
     userId:     '2tQreqXcDpaAiSBqlK7T',
     apiKey:     'pit-62015106-1b7f-4521-9713-96cc49366787',
     apiBase:    'https://services.leadconnectorhq.com',
@@ -281,8 +281,8 @@
         lastName: lastName || '-',
         email,
         phone,
-        source: 'Microtox Glass Skin Treatment LP',
-        tags: ['Microtox Glass Skin Treatment'],
+        source: 'Botox Glow Deal LP',
+        tags: ['Botox Glow Deal'],
       });
       const contactId = contactRes.contact?.id || contactRes.id;
 
@@ -295,7 +295,7 @@
         assignedUserId: GHL.userId,
         startTime:      isoInTz(start, BUSINESS_TZ),
         endTime:        isoInTz(end,   BUSINESS_TZ),
-        title:          `${name} — Microtox Glass Skin Treatment`,
+        title:          `${name} — Botox Glow Deal`,
         selectedTimezone: BUSINESS_TZ,
         appointmentStatus: 'new',
       });
