@@ -17,10 +17,10 @@
 
   const BUSINESS_TZ = "America/Los_Angeles";
 
-  // Generate 1-hr slots from 9 AM to 5 PM
+  // Generate 1-hr slots from 10 AM to 4 PM
   function buildAllSlots() {
     const slots = [];
-    for (let h = 9; h <= 17; h++) {
+    for (let h = 10; h <= 16; h++) {
       const ampm = h < 12 ? 'AM' : 'PM';
       const display = h === 0 ? 12 : h > 12 ? h - 12 : h;
       slots.push({ label: display + ':00 ' + ampm, hour: h, minute: 0 });
@@ -121,8 +121,11 @@
 
     const cells = [];
     const cursor = new Date(today);
-    for (let i = 0; i < 6; i++) {
-      cells.push(new Date(cursor));
+    while (cells.length < 6) {
+      const dow = cursor.getDay();
+      if (dow !== 6) {
+        cells.push(new Date(cursor));
+      }
       cursor.setDate(cursor.getDate() + 1);
     }
 
@@ -163,8 +166,8 @@
       });
     }
 
-    // Morning block (9 AM - 11 AM)
-    const morning = ALL_SLOTS.filter(s => s.hour >= 9 && s.hour <= 11);
+    // Morning block (10 AM - 11 AM)
+    const morning = ALL_SLOTS.filter(s => s.hour >= 10 && s.hour <= 11);
     const morningAvail = filterPast(morning);
     morningGrid.innerHTML = "";
     if (morningAvail.length > 0) {
@@ -180,8 +183,8 @@
       morningGrid.innerHTML = '<p style="font-size:.8rem;color:var(--muted-foreground);text-align:center;grid-column:1/-1;padding:6px 0;">No available morning slots</p>';
     }
 
-    // Afternoon block (12 PM - 5 PM)
-    const afternoon = ALL_SLOTS.filter(s => s.hour >= 12 && s.hour <= 17);
+    // Afternoon block (12 PM - 4 PM)
+    const afternoon = ALL_SLOTS.filter(s => s.hour >= 12 && s.hour <= 16);
     const afternoonAvail = filterPast(afternoon);
     afternoonGrid.innerHTML = "";
     if (afternoonAvail.length > 0) {
